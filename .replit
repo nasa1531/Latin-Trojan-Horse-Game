@@ -1,4 +1,4 @@
-run = "kotlinc -d main.jar"
+run = "kotlinc -d Main.kt"
 
 hidden=["*.jar"]
 
