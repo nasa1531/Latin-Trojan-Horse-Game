@@ -14,43 +14,45 @@ fun main() {
 }
 
 fun characterOneGame() {
-    println("You chose to play as Aeneas!\n" +
-            "Your goal as Aeneas is to first try and defend Troy, and if that fails, try to bring your people to the sea, where you can then bring them to another land.")
-    Thread.sleep(3000)
+    print("You chose to play as Aeneas!\n" +
+            "Your goal as Aeneas is to first try and defend Troy, and if that fails, try to bring your people to the sea, where you can then bring them to another land.\n" +
+            "(press enter to continue)")
+    readln()
     println("The game is beginning!\n" +
             "Everything from this point forward will be in Latin.\n" +
             "Good luck!")
-    Thread.sleep(3000)
+    readln()
     println("Vides magnum ligneum equum.")
-    Thread.sleep(2000)
+    readln()
     println("Magnus ligneus equus est ab portam.")
-    Thread.sleep(2000)
+    readln()
     println("Cassandra et Laocoon narrant magnum ligneum equum est malum.")
-    Thread.sleep(2000)
+    readln()
     print("Cogitas magnum ligneum equum est malum? Ita? Minime?: ")
     when (readln()) {
       "ita" -> { 
-      println("Nam magnus ligneus equus est in urbe.")
+        println("\nNam magnus ligneus equus est in urbe.")
       }
       "minime" -> { 
-      println("Narras magnum ligneum equum est malum, sed populus cogitant est donum et vulnt(check) est.")
-      Thread.sleep(4000)
-      println("Nam magnus ligneus equus est in urbe.")
-      Thread.sleep(2000)
-      println("Paras nam pessime lumi (check).")
+        println("\nNarras magnum ligneum equum est malum, sed populus cogitant est donum et vulnt(check) est.")
+        readln()
+        println("Nam magnus ligneus equus est in urbe.")
+        readln()
+        println("Paras nam pessime lumi (check).")
       }
     }
-    Thread.sleep(2000)
+    readln()
     println("Nox venit.")
 }
 
 fun characterTwoGame() {
-    println("You chose to play as a random Greek solder!\n" +
-            "Your goal as this random Greek solder is to take over Troy, and if that succeeds, to track down and stop Aeneas and his people from escaping.")
-    Thread.sleep(3000)
+    print("You chose to play as a random Greek solder!\n" +
+            "Your goal as this random Greek solder is to take over Troy, and if that succeeds, to track down and stop Aeneas and his people from escaping.\n" +
+            "(press enter to continue)")
+    readln()
     println("The game is beginning!\n" +
             "Everything from this point forward will be in Latin.\n" +
             "Good luck!")
-    Thread.sleep(3000)
+    readln()
     println("TO DO")
 }
