@@ -2,7 +2,7 @@ import kotlin.system.exitProcess
 
 fun main() {
     println("Welcome to the Trojan Horse Game!")
-    print("You can choose to play from a two  perspectives. Enter 1 for Aeneas, and enter 2 for a random Greek solder: ")
+    print("You can choose to play from a two  perspectives. Enter 1 for Aeneas, and enter 2 for a random Greek solder TO DO: ")
     when (readln()) {
         "1" -> { characterOneGame() }
         "2" -> { characterTwoGame() }
@@ -21,7 +21,27 @@ fun characterOneGame() {
             "Everything from this point forward will be in Latin.\n" +
             "Good luck!")
     Thread.sleep(3000)
-    println("Add")
+    println("Vides magnum ligneum equum.")
+    Thread.sleep(2000)
+    println("Magnus ligneus equus est ab portam.")
+    Thread.sleep(2000)
+    println("Cassandra et Laocoon narrant magnum ligneum equum est malum.")
+    Thread.sleep(2000)
+    print("Cogitas magnum ligneum equum est malum? Ita? Minime?: ")
+    when (readln()) {
+      "ita" -> { 
+      println("Nam magnus ligneus equus est in urbe.")
+      }
+      "minime" -> { 
+      println("Narras magnum ligneum equum est malum, sed populus cogitant est donum et vulnt(check) est.")
+      Thread.sleep(4000)
+      println("Nam magnus ligneus equus est in urbe.")
+      Thread.sleep(2000)
+      println("Paras nam pessime lumi (check).")
+      }
+    }
+    Thread.sleep(2000)
+    println("Nox venit.")
 }
 
 fun characterTwoGame() {
@@ -32,5 +52,5 @@ fun characterTwoGame() {
             "Everything from this point forward will be in Latin.\n" +
             "Good luck!")
     Thread.sleep(3000)
-    println("Add")
+    println("TO DO")
 }
