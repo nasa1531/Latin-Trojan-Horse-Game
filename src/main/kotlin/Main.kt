@@ -14,6 +14,7 @@ fun main() {
 }
 
 fun characterOneGame() {
+    combatSystem()
     print("You chose to play as Aeneas!\n" +
             "Your goal as Aeneas is to first try and defend Troy, and if that fails, try to bring your people to the sea, where you can then bring them to another land.\n" +
             "(press enter to continue)")
@@ -55,4 +56,33 @@ fun characterTwoGame() {
             "Good luck!")
     readln()
     println("TO DO")
+}
+
+fun combatSystem() {
+    // temporary variables (will be defined in game function)
+    val charactername = "Aeneas"
+    val opponentname = "Greek Solder"
+    var playerhealth = 50
+    var opponenthealth = 50
+
+    while ((playerhealth >= 0) and (opponenthealth >= 0)) {
+        var playerroll = (1..12).random()
+        var playerdamageroll = playerroll*((1..12).random())
+        var opponentroll = (1..12).random()
+        var opponentdamageroll = playerroll*((1..12).random())
+        if (playerroll > opponentroll) {
+            opponenthealth -= playerdamageroll
+            println("Add Latin for Win $playerdamageroll, $opponenthealth")
+        } else if (playerroll < opponentroll) {
+            playerhealth -= opponentdamageroll
+            println("Add Latin for Loss $opponentdamageroll, $opponenthealth")
+        } else {
+            println("Add Latin for Draw")
+        }
+    }
+    if (playerhealth <= 0) {
+        return(println("Add Latin for win!"))
+    } else if (opponenthealth <= 0) {
+        return(println("Add Latin for loss!"))
+    }
 }
