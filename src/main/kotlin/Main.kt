@@ -2,7 +2,7 @@ import kotlin.system.exitProcess
 
 fun main() {
     println("Welcome to the Trojan Horse Game!")
-    print("You can choose to play from a two  perspectives. Enter 1 for Aeneas, and enter 2 for a random Greek solder TO DO: ")
+    print("You can choose to play from a two  perspectives. Enter 1 for Aeneas, and enter 2 for a random Greek solder: ")
     when (readln()) {
         "1" -> { characterOneGame() }
         "2" -> { characterTwoGame() }
@@ -30,10 +30,10 @@ fun characterOneGame() {
     readln()
     print("Cogitas magnum ligneum equum est malum? Ita? Non?: ")
     when (readln()) {
-      "ita" -> { 
+      "non" -> {
         println("\nNam magnus ligneus equus est in urbe.")
       }
-      "non" -> {
+      "ita" -> {
         println("\nNarras magnum ligneum equum est malum, sed populus cogitant est donum et vulnt(check) est.")
         readln()
         println("Nam magnus ligneus equus est in urbe.")
@@ -68,7 +68,7 @@ fun characterOneGame() {
     print("Pugnas? Ita? Non?: ")
     when (readln()) {
         "ita" -> {
-            combatSystem(100, 120)
+            combatSystem(100, 200)
         }
         "non" -> {
             when ((1..3).random()) {
@@ -110,7 +110,7 @@ fun combatSystem(playerhealth: Int, opponenthealth: Int) {
         var playerroll = (1..12).random()
         var playerdamageroll = playerroll*((1..12).random())
         var opponentroll = (1..12).random()
-        var opponentdamageroll = playerroll*((1..12).random())
+        var opponentdamageroll = opponentroll*((1..12).random())
         tempplayerhealth -= opponentdamageroll
         tempopponenthealth -= playerdamageroll
         println("You did $playerdamageroll damage, and your opponent did $opponentdamageroll. You have $tempplayerhealth health remaining, and your opponent has $tempopponenthealth.")
