@@ -55,20 +55,32 @@ fun characterOneGame() {
         "non" -> {
             println("Dormis.")
             readln()
-            println("Miles intrat et necat tu.")
+            println("Miles intrat.")
+            readln()
+            println("Necaris a milito.")
             readln()
             println("You have died. Maybe you should try again without making a very silly mistake?")
             exitProcess(1)
         }
     }
-    println("Add")
+    println("Tu ambulas ad viam.")
     readln()
     println("Vides armati viri necant Troianos.")
     readln()
     print("Pugnas? Ita? Non?: ")
     when (readln()) {
         "ita" -> {
-            combatSystem(100, 200)
+            when (combatSystem(100, 100)) {
+                true -> {
+                    // Add win condition
+                }
+                false -> {
+                    println("Necaris a armatis viris.")
+                    readln()
+                    println("You have died. Try again next time!")
+                    exitProcess(1)
+                }
+            }
         }
         "non" -> {
             when ((1..3).random()) {
@@ -102,7 +114,7 @@ fun characterTwoGame() {
     characterOneGame()
 }
 
-fun combatSystem(playerhealth: Int, opponenthealth: Int) {
+fun combatSystem(playerhealth: Int, opponenthealth: Int): Boolean {
     // temporary solution to problem with apparently immutable variables (this whole function is a mess!)
     var tempplayerhealth = playerhealth
     var tempopponenthealth = opponenthealth
@@ -115,9 +127,9 @@ fun combatSystem(playerhealth: Int, opponenthealth: Int) {
         tempopponenthealth -= playerdamageroll
         println("You did $playerdamageroll damage, and your opponent did $opponentdamageroll. You have $tempplayerhealth health remaining, and your opponent has $tempopponenthealth.")
         if (tempplayerhealth <= 0) {
-            return(println("Add Latin for Loss!"))
+            return(false)
         } else if (tempopponenthealth <= 0) {
-            return(println("Add Latin for Win!"))
+            return(true)
         }
         println("Press enter to go again")
         readln()
