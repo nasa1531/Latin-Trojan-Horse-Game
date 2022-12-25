@@ -19,7 +19,7 @@ fun characterOneGame() {
             "(press enter to continue)")
     readln()
     println("The game is beginning!\n" +
-            "Everything from this point forward will be in Latin.\n" +
+            "Everything from this point forward (except error messages, but hopefully none of those will appear) will be in Latin.\n" +
             "Good luck!")
     readln()
     println("Vides magnum ligneum equum.")
@@ -30,18 +30,22 @@ fun characterOneGame() {
     readln()
     print("Cogitas magnum ligneum equum est malum? Ita? Non?: ")
     when (readln()) {
-      "non" -> {
-        println("\nNam magnus ligneus equus est in urbe.")
-      }
-      "ita" -> {
-        println("\nNarras magnum ligneum equum est malum, sed populus cogitant est donum et vulnt(check) est.")
-        readln()
-        println("Nam magnus ligneus equus est in urbe.")
-        readln()
-        println("Paras nam pessime.")
-      }
+        "non","Non" -> {
+            println("\n...(ADD SOMETHING ABOUT TIME PASSING)")
+            readln()
+            println("Nam magnus ligneus equus est in urbe.")
+          }
+        "ita","Ita" -> {
+            println("\nNarras magnum ligneum equum est malum, sed populus cogitant est donum et vulnt(check) est.")
+            readln()
+            println("...(ADD SOMETHING ABOUT TIME PASSING)")
+            readln()
+            println("Nam magnus ligneus equus est in urbe.")
+            readln()
+            println("Paras nam pessime.")
+          }
         else -> {
-            print("You had to enter either ita or non (lowercase) for that to work. Now you have to restart because I do not have time to learn how to implement some way of going back without it being clumsy and annoying. Sorry.")
+            print("Uh oh! An error has occurred. You probably entered an invalid input. Try again and watch your spelling!")
             exitProcess(1)
         }
     }
@@ -52,14 +56,14 @@ fun characterOneGame() {
     readln()
     print("Inquires? Ita? Non?: ")
     when (readln()) {
-        "non" -> {
+        "non","Non" -> {
             println("Dormis.")
             readln()
             println("Miles intrat.")
             readln()
             println("Necaris a milito.")
             readln()
-            println("You have died. Maybe you should try again without making a very silly mistake?")
+            println("You have died. Try again next time!")
             exitProcess(1)
         }
     }
@@ -95,7 +99,7 @@ fun characterOneGame() {
             }
         }
         else -> {
-            print("You had to enter either ita or non (lowercase) for that to work. Now you have to restart because I do not have time to learn how to implement some way of going back without it being clumsy and annoying. Sorry.")
+            print("Uh oh! An error has occurred. You probably entered an invalid input. Try again and watch your spelling!")
             exitProcess(1)
         }
     }
@@ -114,7 +118,7 @@ fun characterTwoGame() {
     characterOneGame()
 }
 
-fun combatSystem(playerhealth: Int, opponenthealth: Int): Boolean {
+fun combatSystem(playerhealth: Int, opponenthealth: Int): Any {
     // temporary solution to problem with apparently immutable variables (this whole function is a mess!)
     var tempplayerhealth = playerhealth
     var tempopponenthealth = opponenthealth
@@ -134,4 +138,6 @@ fun combatSystem(playerhealth: Int, opponenthealth: Int): Boolean {
         println("Press enter to go again")
         readln()
     }
+    // Temporary solution to some random problem ive never seen before
+    return(println("Uh Oh! An error has occurred. Please try again doing something differently and see if it repeats."))
 }
