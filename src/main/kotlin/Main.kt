@@ -2,10 +2,24 @@ import kotlin.system.exitProcess
 
 fun main() {
     println("Welcome to the Trojan Horse Game!")
-    print("You can choose to play from a two  perspectives. Enter 1 for Aeneas, and enter 2 for a random Greek solder: ")
+    print("You can choose to play from a two  perspectives. Enter 1 for Aeneas, and enter 2 for a random Greek solder: TEMP: Enter 3 for combat testing and 4 for experiments ")
     when (readln()) {
         "1" -> { characterOneGame() }
         "2" -> { characterTwoGame() }
+        "3" -> {
+            // This is for testing purposes
+            println("Player Health: ")
+            val health1 = readln().toInt()
+            println("Opponent Health: ")
+            val health2 = readln().toInt()
+            println("Opponent Name: ")
+            val name = readln()
+            when (combatSystem(health1, health2, name)) {
+                true -> { println("Win") }
+                false -> { println("Loss") }
+            }
+        }
+        "4" -> { experiments() }
         else -> {
             print("Uh oh! There may be some error here. Try again with a potentially more valid input, and if the issue persists, ask for help.")
             exitProcess(1)
@@ -14,6 +28,7 @@ fun main() {
 }
 
 fun characterOneGame() {
+    var playerhealth = 200
     print("You chose to play as Aeneas!\n" +
             "Your goal as Aeneas is to first try and defend Troy, and if that fails, try to bring your people to the sea, where you can then bring them to another land.\n" +
             "(press enter to continue)")
@@ -43,6 +58,7 @@ fun characterOneGame() {
             println("Nam magnus ligneus equus est in urbe.")
             readln()
             println("Paras nam pessime.")
+            playerhealth += 50
           }
         else -> {
             print("Uh oh! An error has occurred. You probably entered an invalid input. Try again and watch your spelling!")
@@ -73,20 +89,32 @@ fun characterOneGame() {
     readln()
     print("Pugnas? Ita? Non?: ")
     when (readln()) {
-        "ita" -> {
-            when (combatSystem(100, 100)) {
-                true -> {
-                    // Add win condition
-                }
-                false -> {
+        "ita","Ita" -> {
+            var remainingattempts = 5
+            while (remainingattempts > 0) {
+                if (combatSystem(playerhealth, 220, "Armati Viri") == false) {
                     println("Necaris a armatis viris.")
                     readln()
                     println("You have died. Try again next time!")
                     exitProcess(1)
                 }
+                remainingattempts -= 1
+                if (remainingattempts == 0) {
+                    break
+                }
+                playerhealth -= 20
+                println("Necas armatum virum cum furore.")
+                readln()
+                println("Audis multi armati viri.")
+                readln()
+                print("Pugnas? Ita? Non?: ")
+                if (readln() == "non") {
+                    println("ADD LATIN")
+                }
             }
+            println("VICTORY")
         }
-        "non" -> {
+        "non","Non" -> {
             when ((1..3).random()) {
                 1,2 -> {
                     // Add success
@@ -114,30 +142,34 @@ fun characterTwoGame() {
             "Everything from this point forward will be in Latin.\n" +
             "Good luck!")
     readln()
-    println("This is incomplete, and you should know that, so I will presume you accidentally typed in the wrong thing and will send you to the correct place")
-    characterOneGame()
+    println("Add")
 }
 
-fun combatSystem(playerhealth: Int, opponenthealth: Int): Any {
+fun combatSystem(playerhealth: Int, opponenthealth: Int, opponentname: String): Any {
     // temporary solution to problem with apparently immutable variables (this whole function is a mess!)
     var tempplayerhealth = playerhealth
     var tempopponenthealth = opponenthealth
-    while (tempplayerhealth == tempplayerhealth) {
+    while (1 == 1) {
         var playerroll = (1..12).random()
         var playerdamageroll = playerroll*((1..12).random())
         var opponentroll = (1..12).random()
         var opponentdamageroll = opponentroll*((1..12).random())
         tempplayerhealth -= opponentdamageroll
         tempopponenthealth -= playerdamageroll
-        println("You did $playerdamageroll damage, and your opponent did $opponentdamageroll. You have $tempplayerhealth health remaining, and your opponent has $tempopponenthealth.")
+        println("Tu: $playerdamageroll,$tempplayerhealth"+
+                "\n$opponentname: $opponentdamageroll,$tempopponenthealth") // CHECK "tu"
         if (tempplayerhealth <= 0) {
             return(false)
         } else if (tempopponenthealth <= 0) {
             return(true)
         }
-        println("Press enter to go again")
+        println("(Press enter to go again)")
         readln()
     }
     // Temporary solution to some random problem ive never seen before
     return(println("Uh Oh! An error has occurred. Please try again doing something differently and see if it repeats."))
+}
+
+fun experiments() {
+    // This is for testing experimental things, and should not be there in the final version
 }
