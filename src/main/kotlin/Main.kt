@@ -4,7 +4,7 @@ fun main() {
     println("Welcome to the Trojan Horse Game!")
     print("You can choose to play from a two  perspectives. Enter 1 for Aeneas, and enter 2 for a random Greek solder: TEMP: Enter 3 for combat testing and 4 for experiments ")
     when (readln()) {
-        "1" -> { characterOneGame() }
+        "1" -> { aeneasMainGame() }
         "2" -> { characterTwoGame() }
         "3" -> {
             // This is for testing purposes
@@ -27,7 +27,7 @@ fun main() {
     }
 }
 
-fun characterOneGame() {
+fun aeneasMainGame() {
     var playerhealth = 200
     print("You chose to play as Aeneas!\n" +
             "Your goal as Aeneas is to first try and defend Troy, and if that fails, try to bring your people to the sea, where you can then bring them to another land.\n" +
@@ -99,36 +99,35 @@ fun characterOneGame() {
                     exitProcess(1)
                 }
                 remainingattempts -= 1
-                if (remainingattempts == 0) {
-                    break
-                }
+                if (remainingattempts == 0) { break }
                 playerhealth -= 20
                 println("Necas armatum virum cum furore.")
                 readln()
                 println("Audis multi armati viri.")
                 readln()
                 print("Pugnas? Ita? Non?: ")
-                if (readln() == "non") {
-                    println("ADD LATIN")
-                }
+                if (readln() == "non") { aeneasEscape() }
             }
             println("VICTORY")
         }
-        "non","Non" -> {
-            when ((1..3).random()) {
-                1,2 -> {
-                    // Add success
-                    println("You escaped ADD LATIN")
-                }
-                3 -> {
-                    // Add failure
-                    println("You died trying to escape ADD LATIN")
-                }
-            }
-        }
+        "non","Non" -> { aeneasEscape() }
         else -> {
             print("Uh oh! An error has occurred. You probably entered an invalid input. Try again and watch your spelling!")
             exitProcess(1)
+        }
+    }
+}
+
+fun aeneasEscape() {
+    when ((1..2).random()) {
+        1 -> {
+            println("Fugis urbem currisque ad montibus.")
+            readln()
+            println("")
+        }
+        2 -> {
+            // Add failure
+            println("You died trying to escape ADD LATIN")
         }
     }
 }
@@ -167,7 +166,7 @@ fun combatSystem(playerhealth: Int, opponenthealth: Int, opponentname: String): 
         readln()
     }
     // Temporary solution to some random problem ive never seen before
-    return(println("Uh Oh! An error has occurred. Please try again doing something differently and see if it repeats."))
+    return(println("Uh Oh! An error has occurred. Tell the developer that 1 is not equal to 1. Please try again doing something differently and see if it repeats."))
 }
 
 fun experiments() {
