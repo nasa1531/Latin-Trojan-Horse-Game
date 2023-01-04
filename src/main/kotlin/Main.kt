@@ -1,25 +1,21 @@
 import kotlin.system.exitProcess
 
 fun main() {
-    println("Welcome to the Trojan Horse Game!")
-    print("You can choose to play from a two  perspectives. Enter 1 for Aeneas, and enter 2 for a random Greek solder: TEMP: Enter 3 for combat testing and 4 for experiments ")
+    println("Salve, and welcome to the Trojan Horse Game!")
+    print("This is a terminal based adventure game written (for the most part) in Latin. You will play as Aeneas, and will go through the events around the Trojan Horse and the destruction of Troy. You will have to interact with the terminal using your keyboard to instruct your character on what to do. There are multiple ways your quest may end, both good and bad. Good luck! To start, enter 1 into the terminal to select the normal game: ")
     when (readln()) {
         "1" -> { aeneasMainGame() }
-        "2" -> { characterTwoGame() }
-        "3" -> {
+        "2" -> {
             // This is for testing purposes
             println("Player Health: ")
             val health1 = readln().toInt()
             println("Opponent Health: ")
             val health2 = readln().toInt()
-            println("Opponent Name: ")
-            val name = readln()
-            when (combatSystem(health1, health2, name)) {
+            when (combatSystem(health1, health2)) {
                 true -> { println("Win") }
                 false -> { println("Loss") }
             }
         }
-        "4" -> { experiments() }
         else -> {
             print("Uh oh! There may be some error here. Try again with a potentially more valid input, and if the issue persists, ask for help.")
             exitProcess(1)
@@ -29,35 +25,49 @@ fun main() {
 
 fun aeneasMainGame() {
     var playerhealth = 200
-    print("You chose to play as Aeneas!\n" +
-            "Your goal as Aeneas is to first try and defend Troy, and if that fails, try to bring your people to the sea, where you can then bring them to another land.\n" +
-            "(press enter to continue)")
-    readln()
-    println("The game is beginning!\n" +
-            "Everything from this point forward (except error messages, but hopefully none of those will appear) will be in Latin.\n" +
-            "Good luck!")
+    println("The game is beginning!")
+    Thread.sleep(500)
+    println("Everything from this point forward (except error messages, but hopefully none of those will appear) will be in Latin.")
+    Thread.sleep(2000)
+    println("Good luck!")
+    Thread.sleep(500)
+    println("(press enter to continue)")
     readln()
     println("Vides magnum ligneum equum.")
     readln()
-    println("Magnus ligneus equus est ab portam.")
+    println("Equus est a portā Troiae.")
     readln()
-    println("Cassandra et Laocoon narrant magnum ligneum equum est malum.")
+    println("Cassandra et Laocoon narrant equum est malum.")
     readln()
-    print("Cogitas magnum ligneum equum est malum? Ita? Non?: ")
+    println("Cogitant Ulixem facibat equum et equus est decipulam.")
+    readln()
+    println("Ulixes dux Graecorum habet militiam fortem.")
+    readln()
+    print("Cogitas equum est malum? Ita? Non?: ")
     when (readln()) {
         "non","Non" -> {
-            println("\n...(ADD SOMETHING ABOUT TIME PASSING)")
-            readln()
+            print("\n.")
+            Thread.sleep(500)
+            print(".")
+            Thread.sleep(500)
+            println(".")
+            Thread.sleep(500)
             println("Nam magnus ligneus equus est in urbe.")
           }
         "ita","Ita" -> {
-            println("\nNarras magnum ligneum equum est malum, sed populus cogitant est donum et vulnt(check) est.")
+            println("\nNarras equum est malum, sed populus cogitant est donum et offertoriam ad deis.")
             readln()
-            println("...(ADD SOMETHING ABOUT TIME PASSING)")
+            println("Populus aperit portam.")
             readln()
-            println("Nam magnus ligneus equus est in urbe.")
+            print(".")
+            Thread.sleep(500)
+            print(".")
+            Thread.sleep(500)
+            println(".")
+            Thread.sleep(500)
+            println("\nNam magnus ligneus equus est in urbe.")
             readln()
-            println("Paras nam pessime.")
+            println("Paras pro pessimo.")
             playerhealth += 50
           }
         else -> {
@@ -68,47 +78,61 @@ fun aeneasMainGame() {
     readln()
     println("Nox venit.")
     readln()
-    println("Audis pugnam.")
+    println("Audis pugnas.")
     readln()
     print("Inquires? Ita? Non?: ")
     when (readln()) {
         "non","Non" -> {
-            println("Dormis.")
+            println("\nDormis.")
             readln()
             println("Miles intrat.")
             readln()
             println("Necaris a milito.")
             readln()
-            println("You have died. Try again next time!")
-            exitProcess(1)
+            println("Omnia venit ad termino.")
+            readln()
+            println("You have died. Try again next time! Vale!")
+            exitProcess(3)
         }
     }
-    println("Tu ambulas ad viam.")
+    println("\nTu ambulas ad viam.")
     readln()
-    println("Vides armati viri necant Troianos.")
+    println("Vides armati viri necant Troianos gladiis.")
     readln()
     print("Pugnas? Ita? Non?: ")
     when (readln()) {
         "ita","Ita" -> {
             var remainingattempts = 5
             while (remainingattempts > 0) {
-                if (combatSystem(playerhealth, 220, "Armati Viri") == false) {
-                    println("Necaris a armatis viris.")
+                println()
+                if (!combatSystem(playerhealth, 220)) {
+                    println("\nNecaris a armatis viris.")
                     readln()
-                    println("You have died. Try again next time!")
-                    exitProcess(1)
+                    println("Omnia venit ad termino.")
+                    readln()
+                    println("You have died. Try again next time! Vale!")
+                    exitProcess(3)
                 }
                 remainingattempts -= 1
                 if (remainingattempts == 0) { break }
                 playerhealth -= 20
-                println("Necas armatum virum cum furore.")
+                println("\nNecas armatum virum cum furore.")
                 readln()
                 println("Audis multi armati viri.")
                 readln()
                 print("Pugnas? Ita? Non?: ")
                 if (readln() == "non") { aeneasEscape() }
             }
-            println("VICTORY")
+            println("Necas armatum virum cum furore.")
+            readln()
+            println("Non audis armati viri.")
+            readln()
+            println("Omnes milites sunt mortui.")
+            readln()
+            println("Urbs Troianorum stat.")
+            readln()
+            println("Congratulations! You have won the Trojan Horse Game! That is quite the accomplishment, especially since you won it by going down the most difficult path. Hopefully you did not encounter any errors along your journey, weather they were in the code or in my Latin. Vale!")
+            exitProcess(2)
         }
         "non","Non" -> { aeneasEscape() }
         else -> {
@@ -121,54 +145,49 @@ fun aeneasMainGame() {
 fun aeneasEscape() {
     when ((1..2).random()) {
         1 -> {
-            println("Fugis urbem currisque ad montibus.")
+            println("\nFugis urbem currisque ad montes.")
             readln()
-            println("")
+            println("Convenis Troianos alios in montibus et videre mare.")
+            readln()
+            println("Decernis agere Troianos et condere novum Troianum in alia terra.")
+            readln()
+            println("Congratulations! You have won the Trojan Horse Game! Hopefully you did not encounter any errors along your journey, weather they were in the code or in my Latin. Vale!")
+            exitProcess(2)
         }
         2 -> {
-            // Add failure
-            println("You died trying to escape ADD LATIN")
+            println("Necaris a milito.")
+            readln()
+            println("Omnia venit ad termino.")
+            readln()
+            println("You have died. Try again next time! Vale!")
+            exitProcess(3)
         }
     }
 }
 
-fun characterTwoGame() {
-    print("You chose to play as a random Greek solder!\n" +
-            "Your goal as this random Greek solder is to take over Troy, and if that succeeds, to track down and stop Aeneas and his people from escaping.\n" +
-            "(press enter to continue)")
-    readln()
-    println("The game is beginning!\n" +
-            "Everything from this point forward will be in Latin.\n" +
-            "Good luck!")
-    readln()
-    println("Add")
-}
-
-fun combatSystem(playerhealth: Int, opponenthealth: Int, opponentname: String): Any {
-    // temporary solution to problem with apparently immutable variables (this whole function is a mess!)
+fun combatSystem(playerhealth: Int, opponenthealth: Int): Boolean {
+    // temporary (now permanent, the more elegant solutions are unnecessary for this) solution to problem with the arguments sent to this function being immutable by default (this whole function is a mess!)
     var tempplayerhealth = playerhealth
     var tempopponenthealth = opponenthealth
-    while (1 == 1) {
-        var playerroll = (1..12).random()
-        var playerdamageroll = playerroll*((1..12).random())
-        var opponentroll = (1..12).random()
-        var opponentdamageroll = opponentroll*((1..12).random())
+    var giveinstructions = true
+    while (true) {
+        val playerroll = (1..12).random()
+        val playerdamageroll = playerroll*((1..12).random())
+        val opponentroll = (1..12).random()
+        val opponentdamageroll = opponentroll*((1..12).random())
         tempplayerhealth -= opponentdamageroll
         tempopponenthealth -= playerdamageroll
-        println("Tu: $playerdamageroll,$tempplayerhealth"+
-                "\n$opponentname: $opponentdamageroll,$tempopponenthealth") // CHECK "tu"
+        println("Aeneas: $playerdamageroll,$tempplayerhealth"+
+                "\nAdversator: $opponentdamageroll,$tempopponenthealth") // CHECK "tu"
         if (tempplayerhealth <= 0) {
             return(false)
         } else if (tempopponenthealth <= 0) {
             return(true)
         }
-        println("(Press enter to go again)")
-        readln()
+        if (giveinstructions) {
+            giveinstructions = false
+            println("(Press enter to go again)")
+            readln()
+        } else { readln() }
     }
-    // Temporary solution to some random problem ive never seen before
-    return(println("Uh Oh! An error has occurred. Tell the developer that 1 is not equal to 1. Please try again doing something differently and see if it repeats."))
-}
-
-fun experiments() {
-    // This is for testing experimental things, and should not be there in the final version
 }
